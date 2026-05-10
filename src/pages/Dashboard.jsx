@@ -6,7 +6,7 @@ import {
   BarChart3, Activity, Zap, Copy, Trash2, EyeOff,
   CheckCircle2, AlertCircle, Loader2, RefreshCw,
   TrendingUp, Clock, Plus, ChevronRight, Menu, X,
-  Power, Check
+  Power, Check, FlaskConical
 } from 'lucide-react';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -239,6 +239,7 @@ export default function Dashboard() {
           {/* Nav */}
           <nav className="flex-1 p-4 space-y-1">
             <NavItem to="/dashboard" icon={LayoutDashboard} label="Dashboard" active />
+            <NavItem to="/playground" icon={FlaskConical} label="Playground" />
             <NavItem to="/create-key" icon={Plus} label="Create Key" />
             <NavItem to="/user" icon={User} label="Profile" />
           </nav>
