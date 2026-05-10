@@ -1,23 +1,22 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Background from './components/Background';
 
-import Home      from './pages/Home';
-import Login     from './pages/Login';
-import Register  from './pages/Register';
-import Forgate   from './pages/Forgate';
-import Dashboard from './pages/Dashboard';
-import User      from './pages/User';
-import Carate    from './pages/Carate';
+import Home       from './pages/Home';
+import Login      from './pages/Login';
+import Register   from './pages/Register';
+import Forgate    from './pages/Forgate';
+import Dashboard  from './pages/Dashboard';
+import User       from './pages/User';
+import Carate     from './pages/Carate';
+import Playground from './pages/Playground'; // ← NEW
 
 // ── Auth Guard ─────────────────────────────────────────────────────
-// Token hai toh protected page dikha, warna Login pe bhej do
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('access_token');
   return token ? children : <Navigate to="/login" replace />;
 };
 
 // ── Public Guard ───────────────────────────────────────────────────
-// Already logged in hai toh Dashboard pe bhej do
 const PublicRoute = ({ children }) => {
   const token = localStorage.getItem('access_token');
   return token ? <Navigate to="/dashboard" replace /> : children;
@@ -57,6 +56,11 @@ export default function App() {
 
           <Route path="/create-key" element={
             <PrivateRoute><Carate /></PrivateRoute>
+          } />
+
+          {/* ← NEW: Playground */}
+          <Route path="/playground" element={
+            <PrivateRoute><Playground /></PrivateRoute>
           } />
 
           {/* 404 → Home */}
